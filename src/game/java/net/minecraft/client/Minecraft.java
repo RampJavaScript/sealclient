@@ -1173,11 +1173,9 @@ public class Minecraft implements IThreadListener {
 		// RUNS ACTIVE MODULE BACKGROUND TICK LOOPS (SCAFFOLD, SPRINT, ETC.)
 		client.Client.instance.onTick();
 		
-		// BLOCKS MENU FROM OPENING UNLESS ACTIVELY IN A SERVER OR WORLD
-		if (this.theWorld != null && this.thePlayer != null) {
-			if (Keyboard.isKeyDown(54) && !(this.currentScreen instanceof client.ClickGUI)) {
-				this.displayGuiScreen(new client.ClickGUI());
-			}
+		// Always allow the custom click GUI to open when the hotkey is pressed.
+		if (Keyboard.isKeyDown(54) && !(this.currentScreen instanceof client.ClickGUI)) {
+			this.displayGuiScreen(new client.ClickGUI());
 		}
 
 		if (this.rightClickDelayTimer > 0) {

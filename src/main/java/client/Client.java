@@ -46,7 +46,9 @@ public class Client {
     public void openClickGui() {
         Minecraft mc = Minecraft.getMinecraft();
         if (mc != null) {
-            mc.displayGuiScreen(new ClickGUI());
+            if (!(mc.currentScreen instanceof ClickGUI)) {
+                mc.displayGuiScreen(new ClickGUI());
+            }
         }
     }
 

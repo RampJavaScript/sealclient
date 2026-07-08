@@ -15,11 +15,6 @@ public class ClickGUI extends GuiScreen {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        if (this.mc.theWorld == null) {
-            this.mc.displayGuiScreen(null);
-            return;
-        }
-
         this.drawDefaultBackground();
 
         int x = (this.width - 540) / 2;
