@@ -39,6 +39,7 @@ dependencies {
 	implementation(libs.bundles.common)
 }
 
+
 tasks.withType<Jar> {
 	entryCompression = ZipEntryCompression.STORED
 	// TeaVM will fail if anything from platform-api is in the JAR

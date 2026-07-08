@@ -1168,11 +1168,24 @@ public class Minecraft implements IThreadListener {
 	 * Runs the current tick.
 	 */
 	public void runTick() throws IOException {
+		if (client.Client.instance.getModules().isEmpty()) client.Client.instance.init();
+		
+		// RUNS ACTIVE MODULE BACKGROUND TICK LOOPS (SCAFFOLD, SPRINT, ETC.)
+		client.Client.instance.onTick();
+		
+		// BLOCKS MENU FROM OPENING UNLESS ACTIVELY IN A SERVER OR WORLD
+		if (this.theWorld != null && this.thePlayer != null) {
+			if (Keyboard.isKeyDown(54) && !(this.currentScreen instanceof client.ClickGUI)) {
+				this.displayGuiScreen(new client.ClickGUI());
+			}
+		}
+
 		if (this.rightClickDelayTimer > 0) {
 			--this.rightClickDelayTimer;
 		}
 
 		RateLimitTracker.tick();
+
 
 		boolean isHostingLAN = LANServerController.isHostingLAN();
 		this.isGamePaused = !isHostingLAN && this.isSingleplayer() && this.theWorld != null && this.thePlayer != null
