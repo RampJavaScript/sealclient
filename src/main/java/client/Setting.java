@@ -5,7 +5,7 @@ import java.util.List;
 public class Setting {
     private String name;
     private Module parent;
-    private String type; // "BOOLEAN", "NUMBER", "MODE", "COLOR"
+    private String type; // "BOOLEAN", "NUMBER", "MODE"
     
     private boolean bVal;
     private double nVal, min, max;
@@ -21,7 +21,7 @@ public class Setting {
     public Setting(String name, Module parent, double nVal, double min, double max) {
         this.name = name; this.parent = parent; this.nVal = nVal; this.min = min; this.max = max; this.type = "NUMBER";
     }
-    // Boolean/Rainbow Setting Constructor
+    // Boolean Setting Constructor
     public Setting(String name, Module parent, boolean isRainbow) {
         this.name = name; this.parent = parent; this.isRainbow = isRainbow; this.type = "BOOLEAN";
     }

@@ -7,6 +7,10 @@ public class ClickGUI extends GuiScreen {
 
     private String currentCategory = "Combat";
 
+    public ClickGUI() {
+        this.allowUserInput = true;
+    }
+
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         // Safe Check: Force close the UI if the player disconnects or leaves the world
